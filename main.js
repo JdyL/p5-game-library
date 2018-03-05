@@ -9,6 +9,7 @@ var current_object_event = "";
 var radius = 50;
 
 
+
 function preload() {
     state_list.push(new Dialogue());
 
@@ -45,139 +46,9 @@ function keyReleased() {
     }
 }
 
-function NPC(name, x, y, radius) {
-    this.x = x;
-    this.y = y;
-    this.name = name;
-    this.event = "";
-    this.can_interact = false;
-    this.display = false;
-
-    this.radius = radius,
-
-        this.area_of_focus = {
-
-            min_x: this.x - this.radius,
-            min_y: this.y - this.radius,
-            max_x: this.x + this.radius,
-            max_y: this.y + this.radius
-        }
 
 
 
-    this.initialize = function() {
-        if (this.display) {
-            this.spr = rect(this.x, this.y, 100, 100);
-        }
-
-        if (this.withinInteractionSpace(mouseX, mouseY)) {
-            this.sendObjectDetailsGlobal();
-            console.log("in space")
-        } else {
-            current_object_can_interact = false;
-            console.log("not in space")
-        }
-        // if within x,y, 
-        //this name and this event -> global variable
-        //return can_interact = true
-    };
-
-    this.show = function() {
-        this.display = true;
-    };
-
-    this.sendObjectDetailsGlobal = function() {
-        current_object_can_interact = true;
-        current_object_name = this.name;
-        current_object_event = this.event;
-    };
-
-    this.withinInteractionSpace = function(x, y) {
-        if (x > this.area_of_focus.min_x && x < this.area_of_focus.max_x && y > this.area_of_focus.min_y && y < this.area_of_focus.max_y) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-
-
-}
-
-function Dialogue() {
-    this.name = "Dialogue";
-    this.display = false;
-    var dialogue_array = [];
-    var dialogue_current_element = "";
-
-    this.initialize = function() {
-
-        if (this.display) {
-            pauseAllButThis(); //pause everything
-            circle = ellipse(100, 100, 100, 100);
-            showText(dialogue_current_element);
-        } else {
-
-        }
-    }
-
-    this.createDialogue = function(object_name, event_name, array) {
-        var new_dialogue = {
-            name: object_name,
-            event: event_name,
-            object: array
-        }
-        dialogue_array.push(new_dialogue);
-    }
-
-    function getDialogue(object_name) {
-        for (var i = 0; i < dialogue_array.length; i++) {
-            if (dialogue_array[i].name == object_name) {
-                return dialogue_array[i].object;
-            }
-        }
-        console.log("Cannot find event: " + object_name);
-        return false;
-    }
-
-    function pauseAllButThis() {
-        //TODO
-    }
-
-    this.visible = function() {
-        this.display = true;
-    }
-
-    this.stop = function() {
-        this.hide();
-        resetDialogueCounter();
-    }
-
-    this.hide = function() {
-        this.display = false;
-    }
-
-    this.displayDialogue = function(object_name, event_name, number) {
-        pauseAllButThis(); //pause everything on screen
-        this.visible();
-
-        if (getDialogue(object_name)[number] == undefined) {
-            this.stop();
-        } else {
-
-            console.log(getDialogue(object_name)[number]);
-            dialogue_current_element = getDialogue(object_name)[number];
-            dialogue_counter++;
-        }
-    }
-
-    function showText(string) {
-        textSize(32);
-        show_text = text(string, 10, 10);
-        fill(0, 102, 153);
-    }
-}
 
 function Event(obj) {
     this.obj = obj;
@@ -213,6 +84,24 @@ function Maps() {
 
 // a Game has Maps - each Map has its own: NPCs which contains different Dialogue as per Event Storyline
 // NPC class should handle key presses within a radius
+
+//Game Class
+
+//start with MAP01
+
+// MapManager Class
+// array of Maps with different settings
+// Create Character
+// Also create requirements for map changing, e.g. character goes to a home etc. load the other map
+
+// Character Class
+
+
+// Map Class
+// Create NPCS
+
+
+//NPC Class
 
 
 
