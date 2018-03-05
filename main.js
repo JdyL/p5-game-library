@@ -1,20 +1,22 @@
 var state_list = [];
+var npc_list = [];
 var dialogue_counter = 0;
 
 var current_object_can_interact = false;
-var current_object_name = "test";
+var current_object_name = "";
 var current_object_event = "";
+
+var radius = 50;
 
 
 function preload() {
     state_list.push(new Dialogue());
-    state_list[0].createDialogue("test", "", ["test1", "test2", "test3"]);
 
-    npc = new NPC("test", 100, 100)
+    npc_list.push(new NPC("test", 100, 100, radius));
 }
 
 function setup() {
-
+    state_list[0].createDialogue("test", "", ["test1", "test2", "test3"]);
 }
 
 function draw() {
@@ -22,14 +24,11 @@ function draw() {
     background(200);
     fill(100);
     state_list[0].initialize();
-    npc.initialize();
-    npc.show();
+    npc_list[0].initialize();
+    npc_list[0].show();
 
     //if state is true for a criteria. e.g interact with specific object
     //state changes to specified state
-
-
-
 
 }
 
@@ -39,14 +38,14 @@ function resetDialogueCounter() {
 
 function keyReleased() {
 
-    if (key == "U" && current_object_can_interact == true) {
+    if (key == "Z" && current_object_can_interact == true) {
         console.log("works");
         state_list[0].displayDialogue(current_object_name, current_object_event, dialogue_counter);
 
     }
 }
 
-function NPC(name, x, y) {
+function NPC(name, x, y, radius) {
     this.x = x;
     this.y = y;
     this.name = name;
@@ -54,7 +53,7 @@ function NPC(name, x, y) {
     this.can_interact = false;
     this.display = false;
 
-    this.radius = 20,
+    this.radius = radius,
 
         this.area_of_focus = {
 
@@ -178,14 +177,42 @@ function Dialogue() {
         show_text = text(string, 10, 10);
         fill(0, 102, 153);
     }
+}
 
+function Event(obj) {
+    this.obj = obj;
 
+}
+
+function Maps() {
+    array_of_maps = [];
+    map = {
+        name: "",
+        npcs: []
+    };
+
+    function addMap(map) {
+        array_of_maps.push(map);
+    }
+
+    function getListOfMaps() {
+        return array_of_maps;
+    }
 }
 
 
 
+// event manage
+// maps
 
 
+// array of events
+// when do something that triggers event, run that specific event function which also resets the other values
+// also have a function that is inverse of the triggered event to put everything back together
+
+
+// a Game has Maps - each Map has its own: NPCs which contains different Dialogue as per Event Storyline
+// NPC class should handle key presses within a radius
 
 
 
