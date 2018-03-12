@@ -1,0 +1,29 @@
+Classes:
+
+NPC: (a child of Character)
+- Position; co-ordinates (inherited)
+- Name
+- Events e.g. event 01 or some condition
+- Dialogues involved with NPC
+- Display
+
+Dialogue 
+- name
+- Array of Dialogues
+- display
+
+
+Character: (basic components of a character e.g. position)
+- Position; co-ordinates
+- Name
+- Display
+
+Main Character: (child of Character)
+- Movement
+- Keypress
+- Items/Inventory
+
+Map: (Main trigger for spawning certain objects)
+- Accept a set of parameters for a Map
+- map name
+- an array of map PARAMETERS NOT OBJECTS
