@@ -27,3 +27,17 @@ Map: (Main trigger for spawning certain objects)
 - Accept a set of parameters for a Map
 - map name
 - an array of map PARAMETERS NOT OBJECTS
+
+
+e.g. properties of certain map
+
+const map = {
+    name: "map01",
+    npcs:{
+        {
+            name:npc01
+        }
+        
+    }
+}
+
