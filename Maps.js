@@ -1,29 +1,6 @@
 function Maps() {
     var array_of_maps = [];
-    const spawn_map = {
-        name: "spawn_map",
-        mainCharacterSpawn: {
-            position_x: 100,
-            position_y: 100
-        },
-        npc: {
-            beginner_guide: {
-                name: "beginner_guide",
-                position_x: 250,
-                position_y: 250,
-                display: true,
-
-            },
-            shopkeeper: {
-                name: "shopkeeper",
-                position_x: 300,
-                position_y: 300,
-                display: true,
-            }
-        }
-    }
-
-    array_of_maps.push(spawn_map);
+    create_maps();
 
     for (let i = 0; i < array_of_maps.length; i++) {
         console.log(array_of_maps[i]);
@@ -38,5 +15,32 @@ function Maps() {
             }
         }
     };
+
+    function create_maps() {
+        const spawn_map = {
+            name: "spawn_map",
+            mainCharacterSpawn: {
+                position_x: 100,
+                position_y: 100
+            },
+            npc: {
+                beginner_guide: {
+                    name: "beginner_guide",
+                    position_x: 250,
+                    position_y: 250,
+                    display: true,
+    
+                },
+                shopkeeper: {
+                    name: "shopkeeper",
+                    position_x: 300,
+                    position_y: 300,
+                    display: true,
+                }
+            }
+        }
+    
+        array_of_maps.push(spawn_map);
+    }
 
 }

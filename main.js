@@ -9,39 +9,36 @@
 // var radius = 50;
 
 var current_map = "spawn_map";
+const width = 1000;
+const height = 700;
+
 
 
 
 function preload() {
-    // state_list.push(new Dialogue());
 
-    // npc_list.push(new NPC("test", 100, 100, radius));
     maps = new Maps();
 }
 
 function setup() {
-    // state_list[0].createDialogue("test", "", ["test1", "test2", "test3"]);
+
 }
 
 function draw() {
-    createCanvas(400, 400);
+    createCanvas(width, height);
     background(200);
     fill(100);
 
-    //console.log(maps.get_map("spawn_map"));
+
     get_current_map = maps.get_map(current_map);
-    ellipse(get_current_map.mainCharacterSpawn.position_x, 200, 20, 20);
+    ellipse(get_current_map.mainCharacterSpawn.position_x, get_current_map.mainCharacterSpawn.position_y, 20, 20);
 
-    // state_list[0].initialize();
-    // npc_list[0].initialize();
-    // npc_list[0].show();
 
-    // //if state is true for a criteria. e.g interact with specific object
-    // //state changes to specified state
 
 }
 
 function spawnMainCharacter() {
+
     // make character
     //character.initialize
 }
