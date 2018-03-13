@@ -1,37 +1,66 @@
-var state_list = [];
-var npc_list = [];
-var dialogue_counter = 0;
+// var state_list = [];
+// var npc_list = [];
+// var dialogue_counter = 0;
 
-var current_object_can_interact = false;
-var current_object_name = "";
-var current_object_event = "";
+// var current_object_can_interact = false;
+// var current_object_name = "";
+// var current_object_event = "";
 
-var radius = 50;
+// var radius = 50;
+
+var current_map = "spawn_map";
 
 
 
 function preload() {
-    state_list.push(new Dialogue());
+    // state_list.push(new Dialogue());
 
-    npc_list.push(new NPC("test", 100, 100, radius));
+    // npc_list.push(new NPC("test", 100, 100, radius));
+    maps = new Maps();
 }
 
 function setup() {
-    state_list[0].createDialogue("test", "", ["test1", "test2", "test3"]);
+    // state_list[0].createDialogue("test", "", ["test1", "test2", "test3"]);
 }
 
 function draw() {
     createCanvas(400, 400);
     background(200);
     fill(100);
-    state_list[0].initialize();
-    npc_list[0].initialize();
-    npc_list[0].show();
 
-    //if state is true for a criteria. e.g interact with specific object
-    //state changes to specified state
+    //console.log(maps.get_map("spawn_map"));
+    get_current_map = maps.get_map(current_map);
+    ellipse(get_current_map.mainCharacterSpawn.position_x, 200, 20, 20);
+
+    // state_list[0].initialize();
+    // npc_list[0].initialize();
+    // npc_list[0].show();
+
+    // //if state is true for a criteria. e.g interact with specific object
+    // //state changes to specified state
 
 }
+
+function spawnMainCharacter() {
+    // make character
+    //character.initialize
+}
+
+function spawnNPC() {
+
+}
+
+function mapInitialize() {
+
+}
+
+function updateCurrentMap(new_map) {
+    current_map = new_map;
+}
+
+
+
+
 
 function resetDialogueCounter() {
     dialogue_counter = 0;
@@ -55,21 +84,21 @@ function Event(obj) {
 
 }
 
-function Maps() {
-    array_of_maps = [];
-    map = {
-        name: "",
-        npcs: []
-    };
+// function Maps() {
+//     array_of_maps = [];
+//     map = {
+//         name: "",
+//         npcs: []
+//     };
 
-    function addMap(map) {
-        array_of_maps.push(map);
-    }
+//     function addMap(map) {
+//         array_of_maps.push(map);
+//     }
 
-    function getListOfMaps() {
-        return array_of_maps;
-    }
-}
+//     function getListOfMaps() {
+//         return array_of_maps;
+//     }
+// }
 
 
 
