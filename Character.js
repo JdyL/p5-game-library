@@ -3,6 +3,10 @@ function Character(posX, posY, display) {
     this.posY = posY;
     this.display = display;
 
+    this.initialize = function () {
+
+    }
+
 
     function hide() {
         this.display = false;
