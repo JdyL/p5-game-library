@@ -18,10 +18,12 @@ const height = 700;
 function preload() {
 
     maps = new Maps();
+
+
 }
 
 function setup() {
-
+    char = new MainCharacter(300, 300, true);
 }
 
 function draw() {
@@ -34,6 +36,9 @@ function draw() {
     ellipse(get_current_map.mainCharacterSpawn.position_x, get_current_map.mainCharacterSpawn.position_y, 20, 20);
 
 
+    char.initialize();
+
+
 
 }
 
@@ -41,6 +46,7 @@ function spawnMainCharacter() {
 
     // make character
     //character.initialize
+
 }
 
 function spawnNPC() {
@@ -57,29 +63,18 @@ function updateCurrentMap(new_map) {
 
 
 
-
-
-function resetDialogueCounter() {
-    dialogue_counter = 0;
-}
-
 function keyReleased() {
 
-    if (key == "Z" && current_object_can_interact == true) {
-        console.log("works");
-        state_list[0].displayDialogue(current_object_name, current_object_event, dialogue_counter);
+    // if (key == "Z" && current_object_can_interact == true) {
+    //     console.log("works");
+    //     state_list[0].displayDialogue(current_object_name, current_object_event, dialogue_counter);
 
-    }
+    // }
 }
 
 
 
 
-
-function Event(obj) {
-    this.obj = obj;
-
-}
 
 // function Maps() {
 //     array_of_maps = [];
