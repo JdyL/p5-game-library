@@ -3,8 +3,10 @@ function Character(posX, posY, display) {
     this.posY = posY;
     this.display = display;
 
+
     this.initialize = function () {
 
+        // animation(explode_animation, 100, 130);
     }
 
 
